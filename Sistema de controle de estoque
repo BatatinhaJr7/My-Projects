@@ -1,0 +1,59 @@
+import os
+
+banco_dados = []
+
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def pausar():
+    input('Presione ENTER para continuar...')
+
+
+def mostrar_produtos():
+    contador = 1
+    for item in banco_dados:
+        print(f'{contador} - {item}')
+        contador += 1
+
+
+def selecionar_menu(opcao):
+    if (opcao == '1'):
+        produto = input('Digite o novo produto: ')
+        banco_dados.append(produto)
+    elif (opcao == '2'):
+        limpar_tela()
+        mostrar_produtos()
+        pausar()
+    elif (opcao == '3'):
+        mostrar_produtos()
+        numero_produto = int(
+            input('Digite o número do produto para excluir: '))
+        del banco_dados[numero_produto - 1]
+    elif (opcao == '4'):
+        mostrar_produtos()
+        numero_produto = int(input('Digite o número do produto para editar: '))
+        novo_produto = input('Digite o novo produto: ')
+        banco_dados[numero_produto - 1] = novo_produto
+    elif (opcao == '0'):
+        print('Saindo do sistema...')
+        exit(0)
+    else:
+        print('Opção incorreta, tente novamente')
+
+
+def exibir_menu():
+    limpar_tela()
+    print('---> MENU <---')
+    print('1 - Novo produto')
+    print('2 - Listar produtos')
+    print('3 - Excluir produtos')
+    print('4 - Editar produtos')
+    print('0 - Sair')
+    opcao = input('Escolha uma opção: ')
+    selecionar_menu(opcao)
+    exibir_menu()
+
+
+exibir_menu()
