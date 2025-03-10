@@ -1,4 +1,4 @@
-eventos = {}  # Dicionário para armazenar os eventos
+eventos = {}
 
 
 def cadastrar_evento():
@@ -13,7 +13,7 @@ def cadastrar_evento():
         "vagas": vagas,
         "local": local,
         "horario": horario,
-        "inscritos": []  # Lista para armazenar os inscritos
+        "inscritos": []
     }
 
     print(f"Evento '{nome}' cadastrado com sucesso!")
@@ -57,7 +57,7 @@ def visualizar_eventos():
             print(f"Data: {info['data']}")
             print(f"Horário: {info['horario']}")
             print(f"Vagas restantes: {info['vagas'] - len(info['inscritos'])}")
-            print(f"Inscritos: {len(info['inscritos'])}")  # Mostra o número de inscritos
+            print(f"Inscritos: {len(info['inscritos'])}")
             print("-" * 20)
     else:
         print("Não há eventos cadastrados.")
@@ -88,10 +88,11 @@ def cancelar_inscricao():
     else:
         print(f"Evento '{nome}' não encontrado.")
 
+
 def excluir_evento():
     nome = input("Digite o nome do evento que deseja excluir: ")
     if nome in eventos:
-        del eventos[nome]  # Remove o evento do dicionário
+        del eventos[nome]
         print(f"Evento '{nome}' excluído com sucesso!")
     else:
         print(f"Evento '{nome}' não encontrado.")
@@ -104,11 +105,12 @@ def menu():
     print("3 - Visualizar eventos")
     print("4 - Inscrever-se em evento")
     print("5 - Cancelar inscrição")
-    print("6 - Excluir evento")  # Nova opção
+    print("6 - Excluir evento")
     print("7 - Sair")
 
     opcao = input("Digite a opção desejada: ")
     return opcao
+
 
 while True:
     opcao = menu()
@@ -123,7 +125,7 @@ while True:
         inscrever_evento()
     elif opcao == "5":
         cancelar_inscricao()
-    elif opcao == "6":  # Chamada da nova função
+    elif opcao == "6":
         excluir_evento()
     elif opcao == "7":
         print("Saindo do sistema...")
